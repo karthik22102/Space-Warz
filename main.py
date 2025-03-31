@@ -80,8 +80,8 @@ class Meteor(pygame.sprite.Sprite):
 def collisons():
     global running
     collison_sprites = pygame.sprite.spritecollide(player, meteor_sprites, True)
-    # if collison_sprites:
-    #     running = False
+    if collison_sprites:
+        running = False
 
     for laser in laser_sprites:
         collied_sprites = pygame.sprite.spritecollide(laser, meteor_sprites, True)
