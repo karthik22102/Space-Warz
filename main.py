@@ -32,7 +32,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.center += self.direction * self.speed * dt
 
         recent_keys = pygame.key.get_just_pressed()
-        if recent_keys[pygame.K_SPACE] and self.can_shoot:
+        mouse_press = pygame.mouse.get_pressed()
+        if (recent_keys[pygame.K_SPACE] or mouse_press[0]) and self.can_shoot:
             Laser(laser_surf, self.rect.midtop, (all_sprites, laser_sprites))
             self.can_shoot = False
             self.laser_shoot_time = pygame.time.get_ticks()
@@ -79,8 +80,8 @@ class Meteor(pygame.sprite.Sprite):
 def collisons():
     global running
     collison_sprites = pygame.sprite.spritecollide(player, meteor_sprites, True)
-    if collison_sprites:
-        running = False
+    # if collison_sprites:
+    #     running = False
 
     for laser in laser_sprites:
         collied_sprites = pygame.sprite.spritecollide(laser, meteor_sprites, True)

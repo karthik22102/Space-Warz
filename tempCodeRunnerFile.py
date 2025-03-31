@@ -1,2 +1,2 @@
-
-mixer.music.set_volume(0.7) 
+if collison_sprites:
+    #     running = False
